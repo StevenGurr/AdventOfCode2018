@@ -1,0 +1,3 @@
+Having a go at Advent of Code 2018
+
+No promises these are the best solutions ever, but being attempted around a full time and general life goings on...
