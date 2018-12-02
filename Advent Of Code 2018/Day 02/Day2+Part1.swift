@@ -45,10 +45,8 @@ extension Day2 {
         }
         
         func lettersMatch(chars: CharDistribution, matchCount: Int) -> Bool {
-            for (_, charCount) in chars.enumerated() {
-                if charCount.value == matchCount {
-                    return true
-                }
+            for charCount in chars where charCount.value == matchCount {
+                return true
             }
             
             return false

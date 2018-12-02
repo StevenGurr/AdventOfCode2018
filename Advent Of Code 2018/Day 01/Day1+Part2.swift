@@ -9,6 +9,8 @@
 import Foundation
 
 extension Day1 {
+    
+    /// Note: There's a huge cost of memory churn and slow performance in exchange for immutability. This takes a long time to run.
     struct Part2: Solveable {
         func go() -> String {
             
@@ -33,7 +35,7 @@ extension Day1 {
             var frequency = immutableFrequency
             var seenFrequencies = immutableSeenFrequencies
             
-            for (_, value) in values.enumerated() {
+            for value in values {
                 if gotMatch(seenFrequencies: seenFrequencies, newFrequency: frequency) {
                     return (firstMatch: frequency, seenFrequencies: seenFrequencies, frequency: frequency)
                 } else {

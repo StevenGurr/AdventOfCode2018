@@ -12,9 +12,9 @@ let projectRootPath = "/Users/steven/Advent Of Code/Advent Of Code 2018/Advent O
 
 let daysDone = 2
 
-Day1.Part1().printResult()
-Day1.Part2().printResult()
-Day2.Part1().printResult()
-Day2.Part2().printResult()
+Day1.Part1().printResult(expected: "580")
+Day1.Part2().printResult(expected: "81972")
+Day2.Part1().printResult(expected: "6000")
+Day2.Part2().printResult(expected: "pbykrmjmizwhxlqnasfgtycdv")
 
 print()

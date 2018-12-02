@@ -114,6 +114,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B09296C721B29FC700629713 /* Build configuration list for PBXNativeTarget "Advent Of Code 2018" */;
 			buildPhases = (
+				B0491A4421B4117200061F28 /* Swiftlint */,
 				B09296BC21B29FC700629713 /* Sources */,
 				B09296BD21B29FC700629713 /* Frameworks */,
 				B09296BE21B29FC700629713 /* CopyFiles */,
@@ -158,6 +159,27 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B0491A4421B4117200061F28 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B09296BC21B29FC700629713 /* Sources */ = {

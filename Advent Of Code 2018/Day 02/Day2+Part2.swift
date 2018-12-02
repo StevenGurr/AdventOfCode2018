@@ -11,9 +11,9 @@ import Foundation
 extension Day2 {
     struct Part2: Solveable {
         func go() -> String {
-            for (_, line1) in lines.enumerated() {
+            for line1 in lines {
 //                print("Loop1")
-                for (_, line2) in lines.enumerated() {
+                for line2 in lines {
 //                    print("\tLoop2")
                     let indexesOfDifferentChars = getIndexesOfDifferentChars(line1: line1, line2: line2)
                     if indexesOfDifferentChars.count == 1, let index = indexesOfDifferentChars.first {
@@ -32,10 +32,8 @@ extension Day2 {
             
             var differentIndexes: [Int] = []
             
-            for (index, (char1, char2)) in zip(line1, line2).enumerated() {
-                if char1 != char2 {
-                    differentIndexes.append(index)
-                }
+            for (index, (char1, char2)) in zip(line1, line2).enumerated() where char1 != char2 {
+                differentIndexes.append(index)
             }
             
             return differentIndexes
@@ -43,10 +41,8 @@ extension Day2 {
         
         private func get(string: String, withoutCharacterAt indexToRemove: Int) -> String {
             var result = ""
-            for (index, char) in string.enumerated() {
-                if index != indexToRemove {
-                    result.append(char)
-                }
+            for (index, char) in string.enumerated() where index != indexToRemove {
+                result.append(char)
             }
             
             return result

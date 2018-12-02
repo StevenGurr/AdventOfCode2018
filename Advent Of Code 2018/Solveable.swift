@@ -13,10 +13,18 @@ protocol Solveable {
 }
 
 extension Solveable {
-    func printResult() {
+    /// Print the result, with optional assertion of correctness
+    /// - Parameter expected: If set, the result is asserted to match this, else it's considered to have failed.
+    func printResult(expected: String? = nil) {
         let prefixToStrip = CharacterSet(charactersIn: "Advent_Of_Code_2018.")
         let currentType = String(reflecting: self).trimmingCharacters(in: prefixToStrip)
         print(currentType, terminator: "")
-        print(" - \(go())")
+        
+        let result = go()
+        if let expected = expected, result != expected {
+            print(" - Failed! Expected '\(expected)', but got '\(result)'")
+        } else {
+            print(" - \(result)")
+        }
     }
 }
