@@ -10,11 +10,11 @@ import Foundation
 
 let projectRootPath = "/Users/steven/Advent Of Code/Advent Of Code 2018/Advent Of Code 2018"
 
-let puzzle: Solveable = Day1.Part2()
+let daysDone = 2
 
-if let result = puzzle.go() {
-    print("The answer is: \(result)")
-} else {
-    print("No return value from go()")
-}
+Day1.Part1().printResult()
+Day1.Part2().printResult()
+Day2.Part1().printResult()
+Day2.Part2().printResult()
+
 print()

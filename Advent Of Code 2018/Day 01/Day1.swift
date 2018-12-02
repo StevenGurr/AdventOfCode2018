@@ -28,8 +28,8 @@ struct Day1 {
     }
     
     static var values: [Int] {
-        let lines = Day1.input.split(separator: "\n").map { String($0) }
-        let values = lines.map { Day1.lineToInt(line: $0) }
+        let lines = input.split(separator: "\n").map { String($0) }
+        let values = lines.map { lineToInt(line: $0) }
         return values
     }
 }

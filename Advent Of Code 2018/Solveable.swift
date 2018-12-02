@@ -9,5 +9,14 @@
 import Foundation
 
 protocol Solveable {
-    func go() -> String?
+    func go() -> String
+}
+
+extension Solveable {
+    func printResult() {
+        let prefixToStrip = CharacterSet(charactersIn: "Advent_Of_Code_2018.")
+        let currentType = String(reflecting: self).trimmingCharacters(in: prefixToStrip)
+        print(currentType, terminator: "")
+        print(" - \(go())")
+    }
 }

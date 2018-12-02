@@ -1,5 +1,5 @@
 //
-//  Part 2.swift
+//  Day1+Part2.swift
 //  Advent Of Code 2018
 //
 //  Created by Steven Gurr on 01/12/2018.
@@ -10,13 +10,13 @@ import Foundation
 
 extension Day1 {
     struct Part2: Solveable {
-        func go() -> String? {
+        func go() -> String {
             
             let values = Day1.values
             var runResults = tryValueSet(frequency: 0, seenFrequencies: [], values: values)
             
             while runResults.firstMatch == nil {
-                print("running again - set size is \(runResults.seenFrequencies.count)")
+//                print("running again - set size is \(runResults.seenFrequencies.count)")
                 runResults = tryValueSet(frequency: runResults.frequency, seenFrequencies: runResults.seenFrequencies, values: values)
             }
             
