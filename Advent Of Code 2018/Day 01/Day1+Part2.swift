@@ -14,7 +14,7 @@ extension Day1 {
     struct Part2: Solveable {
         func go() -> String {
             
-            let values = Day1.values
+            let values = linesFromFile(path: "Day 01/Input").map(lineToInt)
             var runResults = tryValueSet(frequency: 0, seenFrequencies: [], values: values)
             
             while runResults.firstMatch == nil {

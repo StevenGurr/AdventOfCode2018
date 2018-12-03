@@ -14,7 +14,7 @@ extension Day2 {
             var twoMatches = 0
             var threeMathes = 0
             
-            for line in Day2.lines {
+            for line in linesFromFile(path: "Day 02/Input") {
                 let frequency = lineToFrequency(line: line)
                 
                 if lettersMatch(chars: frequency, matchCount: 2) {

@@ -6,3 +6,7 @@ line_length:
 
 large_tuple:
  warning: 3
+
+identifier_name:
+ min_length: 2
+

@@ -11,7 +11,8 @@ import Foundation
 extension Day1 {
     struct Part1: Solveable {
         func go() -> String {
-            let reduced = Day1.values.reduce(0, { $0 + $1 })
+            let lines = linesFromFile(path: "Day 01/Input").map(lineToInt)
+            let reduced = lines.reduce(0, { $0 + $1 })
             
             return String(reduced)
         }

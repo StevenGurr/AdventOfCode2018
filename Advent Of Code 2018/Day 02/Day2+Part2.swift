@@ -11,6 +11,7 @@ import Foundation
 extension Day2 {
     struct Part2: Solveable {
         func go() -> String {
+            let lines = linesFromFile(path: "Day 02/Input")
             for line1 in lines {
 //                print("Loop1")
                 for line2 in lines {
