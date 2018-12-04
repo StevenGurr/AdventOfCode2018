@@ -14,6 +14,8 @@
 		B0491A4921B5B20400061F28 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A4821B5B20400061F28 /* Helpers.swift */; };
 		B0491A4B21B5B69100061F28 /* Day3+Part1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A4A21B5B69100061F28 /* Day3+Part1.swift */; };
 		B0491A5021B5C45600061F28 /* Day3+Part2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A4F21B5C45600061F28 /* Day3+Part2.swift */; };
+		B0491A5321B714C900061F28 /* Day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A5221B714C900061F28 /* Day4.swift */; };
+		B0491A5521B714E600061F28 /* Day4+Part1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A5421B714E600061F28 /* Day4+Part1.swift */; };
 		B09296C421B29FC700629713 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09296C321B29FC700629713 /* main.swift */; };
 		B09296CE21B2A03400629713 /* Day1+Part1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09296CD21B2A03400629713 /* Day1+Part1.swift */; };
 		B09296D021B2A05800629713 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09296CF21B2A05800629713 /* Day1.swift */; };
@@ -45,6 +47,9 @@
 		B0491A4C21B5B6D000061F28 /* Input - test */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Input - test"; sourceTree = "<group>"; };
 		B0491A4E21B5C3B400061F28 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
 		B0491A4F21B5C45600061F28 /* Day3+Part2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day3+Part2.swift"; sourceTree = "<group>"; };
+		B0491A5221B714C900061F28 /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
+		B0491A5421B714E600061F28 /* Day4+Part1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day4+Part1.swift"; sourceTree = "<group>"; };
+		B0491A5621B72A7900061F28 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
 		B09296C021B29FC700629713 /* Advent Of Code 2018 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advent Of Code 2018"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09296C321B29FC700629713 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B09296CC21B2A02200629713 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
@@ -90,6 +95,16 @@
 			path = "Day 03";
 			sourceTree = "<group>";
 		};
+		B0491A5121B714B100061F28 /* Day 04 */ = {
+			isa = PBXGroup;
+			children = (
+				B0491A5221B714C900061F28 /* Day4.swift */,
+				B0491A5421B714E600061F28 /* Day4+Part1.swift */,
+				B0491A5621B72A7900061F28 /* Input */,
+			);
+			path = "Day 04";
+			sourceTree = "<group>";
+		};
 		B09296B721B29FC700629713 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +127,7 @@
 				B09296CA21B29FE700629713 /* Day 01 */,
 				B0491A3B21B3EB1900061F28 /* Day 02 */,
 				B0491A4521B5B1D600061F28 /* Day 03 */,
+				B0491A5121B714B100061F28 /* Day 04 */,
 				B0491A4821B5B20400061F28 /* Helpers.swift */,
 				B09296D121B2A5A100629713 /* Solveable.swift */,
 				B09296C321B29FC700629713 /* main.swift */,
@@ -210,8 +226,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0491A5521B714E600061F28 /* Day4+Part1.swift in Sources */,
 				B09296CE21B2A03400629713 /* Day1+Part1.swift in Sources */,
 				B0491A4B21B5B69100061F28 /* Day3+Part1.swift in Sources */,
+				B0491A5321B714C900061F28 /* Day4.swift in Sources */,
 				B0491A3D21B3EB2B00061F28 /* Day2.swift in Sources */,
 				B09296D021B2A05800629713 /* Day1.swift in Sources */,
 				B0491A4921B5B20400061F28 /* Helpers.swift in Sources */,

@@ -25,6 +25,7 @@ struct Day3 {
             }
             
             // Assuming everything's fine in terms of array indexing and Range matching...
+            // Force unwrapping danger ahead!
             id = Int(string[Range(match.range(at: 1), in: string)!])!
             left = Int(string[Range(match.range(at: 2), in: string)!])!
             top = Int(string[Range(match.range(at: 3), in: string)!])!
