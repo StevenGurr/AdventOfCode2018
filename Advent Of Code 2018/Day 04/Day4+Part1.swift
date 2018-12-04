@@ -16,11 +16,40 @@ extension Day4 {
                 preconditionFailure("Failed to make record")
             }
             
-            let sortedRecords = records.sorted(by: { $0.minute < $1.minute })
+            let sortedRecords = records.sorted()
             
-            print(sortedRecords)
+            let sleepRecords = getSleepRecords(records: sortedRecords)
+            
+            // Force-unwrapped to save time...
+            let guardIdThatSleptTheMost = sleepRecords.sorted(by: { $0.value > $1.value }).first!.key
             
             preconditionFailure()
+        }
+        
+        func getSleepRecords(records: [Record]) -> SleepRecord {
+            var sleepRecords = SleepRecord()
+            
+            var currentGuardId = 0
+            var fellAsleepMinute = 0
+            for record in records {
+                switch record.event {
+                case let .beginsShift(id):
+                    currentGuardId = id
+                    
+                case .fallsAsleep:
+                    fellAsleepMinute = record.minute
+                    
+                case .wakesUp:
+                    let minutesAsleep = record.minute - fellAsleepMinute
+                    if let sleepMinutesSoFar = sleepRecords[currentGuardId] {
+                        sleepRecords[currentGuardId] = sleepMinutesSoFar + minutesAsleep
+                    } else {
+                        sleepRecords[currentGuardId] = minutesAsleep
+                    }
+                }
+            }
+            
+            return sleepRecords
         }
     }
 }
