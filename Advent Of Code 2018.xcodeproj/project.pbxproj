@@ -51,9 +51,9 @@
 		B0491A4F21B5C45600061F28 /* Day3+Part2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day3+Part2.swift"; sourceTree = "<group>"; };
 		B0491A5221B714C900061F28 /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
 		B0491A5421B714E600061F28 /* Day4+Part1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day4+Part1.swift"; sourceTree = "<group>"; };
-		B0491A5621B72A7900061F28 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
+		B0491A5621B72A7900061F28 /* Input - test */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Input - test"; sourceTree = "<group>"; };
 		B0491A5721B72EF700061F28 /* Day4+Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day4+Record.swift"; sourceTree = "<group>"; };
-		B0491A5921B8620800061F28 /* Input - long */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Input - long"; sourceTree = "<group>"; };
+		B0491A5921B8620800061F28 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
 		B0491A5A21B8627900061F28 /* Day4+Part2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day4+Part2.swift"; sourceTree = "<group>"; };
 		B09296C021B29FC700629713 /* Advent Of Code 2018 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advent Of Code 2018"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09296C321B29FC700629713 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 				B0491A5721B72EF700061F28 /* Day4+Record.swift */,
 				B0491A5421B714E600061F28 /* Day4+Part1.swift */,
 				B0491A5A21B8627900061F28 /* Day4+Part2.swift */,
-				B0491A5921B8620800061F28 /* Input - long */,
-				B0491A5621B72A7900061F28 /* Input */,
+				B0491A5621B72A7900061F28 /* Input - test */,
+				B0491A5921B8620800061F28 /* Input */,
 			);
 			path = "Day 04";
 			sourceTree = "<group>";

@@ -11,82 +11,50 @@ import Foundation
 extension Day4 {
     struct Part1: Solveable {
         func go() -> String {
-            let lines = linesFromFile(path: "Day 04/Input")
-            guard let records = try? lines.map(Record.init) else {
-                preconditionFailure("Failed to make record")
+            let sleepRecords = Day4.getSleepRecords()
+            
+            // Count up how long each ID slept in total
+            let sleepMinutesById = sleepRecords.reduce([:]) { (currentRecords, record) -> [Int: Int] in
+                let thisRecordsSleepTime = (record.fellAsleepMinute..<record.wokeUpMinute).count
+                
+                if let currentMinutesAsleep = currentRecords[record.id] {
+                    var newValues = currentRecords
+                    newValues[record.id] = thisRecordsSleepTime + currentMinutesAsleep
+                    return newValues
+                } else {
+                    var newValues = currentRecords
+                    newValues[record.id] = thisRecordsSleepTime
+                    return newValues
+                }
             }
             
-            let sortedRecords = records.sorted()
-            
-            let sleepRecords = getSleepRecords(records: sortedRecords)
-            
             // Force-unwrapped to save time...
-            let guardIdThatSleptTheMost = sleepRecords.sorted(by: { $0.value > $1.value }).first!.key
-            
-            let sleepiestMinute = findSleepiestMinute(records: sortedRecords, guardIdThatSleptTheMost: guardIdThatSleptTheMost)
+            let guardIdThatSleptTheMost = sleepMinutesById.sorted(by: { $0.value > $1.value }).first!.key
+
+            let sleepiestMinute = findSleepiestMinute(records: sleepRecords, guardIdThatSleptTheMost: guardIdThatSleptTheMost)
             
 //            print("Sleepiest guard is \(guardIdThatSleptTheMost)")
 //            print("Their sleepiest minute was \(sleepiestMinute)")
             return String(guardIdThatSleptTheMost * sleepiestMinute)
         }
         
-        func getSleepRecords(records: [Record]) -> SleepAccumulatorRecord {
-            var sleepRecords = SleepAccumulatorRecord()
-            
-            var currentGuardId = 0
-            var fellAsleepMinute = 0
-            for record in records {
-                switch record.event {
-                case let .beginsShift(id):
-                    currentGuardId = id
-                    
-                case .fallsAsleep:
-                    fellAsleepMinute = record.minute
-                    
-                case .wakesUp:
-                    let minutesAsleep = record.minute - fellAsleepMinute
-                    if let sleepMinutesSoFar = sleepRecords[currentGuardId] {
-                        sleepRecords[currentGuardId] = sleepMinutesSoFar + minutesAsleep
-                    } else {
-                        sleepRecords[currentGuardId] = minutesAsleep
-                    }
-                }
-            }
-            
-            return sleepRecords
-        }
-        
-        private func findSleepiestMinute(records: [Record], guardIdThatSleptTheMost: Int) -> Int {
+        private func findSleepiestMinute(records: [SleepAccumulatorRecord], guardIdThatSleptTheMost: Int) -> Int {
             var minutes: [Int: Int] = [:]
             
-            var currentGuardId = 0
-            var fellAsleepMinute = 0
             for record in records {
-                switch record.event {
-                case let .beginsShift(id):
-                    currentGuardId = id
-                    
-                case .fallsAsleep:
-                    fellAsleepMinute = record.minute
-                    
-                case .wakesUp:
-                    guard currentGuardId == guardIdThatSleptTheMost else {
-                        break
-                    }
-                    for minute in fellAsleepMinute..<record.minute {
-                        if let minutesCountedSofar = minutes[minute] {
-                            minutes[minute] = minutesCountedSofar+1
-                        } else {
-                            minutes[minute] = 1
-                        }
+                guard record.id == guardIdThatSleptTheMost else {
+                    continue
+                }
+                
+                for minute in record.fellAsleepMinute..<record.wokeUpMinute {
+                    if let currentMinuteCount = minutes[minute] {
+                        minutes[minute] = currentMinuteCount + 1
+                    } else {
+                        minutes[minute] = 1
                     }
                 }
             }
-            
-            let sortedMinutes = minutes.sorted(by: { $0.value > $1.value })
-            
-            // Force unwrapping! :o
-            return sortedMinutes.first!.key
+            return minutes.sorted(by: { $0.value > $1.value }).first!.key
         }
     }
 }
