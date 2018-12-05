@@ -9,5 +9,5 @@
 import Foundation
 
 struct Day4 {
-    typealias SleepRecord = [Int: Int]
+    typealias SleepAccumulatorRecord = [Int: Int]
 }

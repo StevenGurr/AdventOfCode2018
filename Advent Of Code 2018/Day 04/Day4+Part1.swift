@@ -23,11 +23,15 @@ extension Day4 {
             // Force-unwrapped to save time...
             let guardIdThatSleptTheMost = sleepRecords.sorted(by: { $0.value > $1.value }).first!.key
             
-            preconditionFailure()
+            let sleepiestMinute = findSleepiestMinute(records: sortedRecords, guardIdThatSleptTheMost: guardIdThatSleptTheMost)
+            
+//            print("Sleepiest guard is \(guardIdThatSleptTheMost)")
+//            print("Their sleepiest minute was \(sleepiestMinute)")
+            return String(guardIdThatSleptTheMost * sleepiestMinute)
         }
         
-        func getSleepRecords(records: [Record]) -> SleepRecord {
-            var sleepRecords = SleepRecord()
+        func getSleepRecords(records: [Record]) -> SleepAccumulatorRecord {
+            var sleepRecords = SleepAccumulatorRecord()
             
             var currentGuardId = 0
             var fellAsleepMinute = 0
@@ -50,6 +54,39 @@ extension Day4 {
             }
             
             return sleepRecords
+        }
+        
+        private func findSleepiestMinute(records: [Record], guardIdThatSleptTheMost: Int) -> Int {
+            var minutes: [Int: Int] = [:]
+            
+            var currentGuardId = 0
+            var fellAsleepMinute = 0
+            for record in records {
+                switch record.event {
+                case let .beginsShift(id):
+                    currentGuardId = id
+                    
+                case .fallsAsleep:
+                    fellAsleepMinute = record.minute
+                    
+                case .wakesUp:
+                    guard currentGuardId == guardIdThatSleptTheMost else {
+                        break
+                    }
+                    for minute in fellAsleepMinute..<record.minute {
+                        if let minutesCountedSofar = minutes[minute] {
+                            minutes[minute] = minutesCountedSofar+1
+                        } else {
+                            minutes[minute] = 1
+                        }
+                    }
+                }
+            }
+            
+            let sortedMinutes = minutes.sorted(by: { $0.value > $1.value })
+            
+            // Force unwrapping! :o
+            return sortedMinutes.first!.key
         }
     }
 }
