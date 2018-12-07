@@ -1,5 +1,6 @@
 disabled_rules:
  - trailing_whitespace
+ - nesting
 
 line_length:
  warning: 150
@@ -8,5 +9,5 @@ large_tuple:
  warning: 3
 
 identifier_name:
- min_length: 2
+ min_length: 1
 
