@@ -42,3 +42,30 @@ extension String {
         return self[startIndex ..< end]
     }
 }
+
+extension String {
+    func capture(from regexString: String) -> [String] {
+        guard let regex = try? NSRegularExpression(pattern: regexString) else {
+            preconditionFailure("Failed to build regex from: \(regexString)")
+        }
+        
+        let allMatches = regex.matches(in: self, range: NSRange(location: 0, length: self.count))
+        
+        guard let match = allMatches.first else {
+            print("Failed to get any matches")
+            return []
+        }
+        
+        var result: [String] = []
+        for index in 1..<match.numberOfRanges {
+            guard let range = Range(match.range(at: index), in: self) else {
+                print("Failed to find match at index \(index)")
+                return []
+            }
+            
+            result.append(String(self[range]))
+        }
+        
+        return result
+    }
+}
