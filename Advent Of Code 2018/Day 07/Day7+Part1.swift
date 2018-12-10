@@ -13,10 +13,9 @@ extension Day7 {
         func go() -> String {
             let lines = linesFromFile(path: "Day 07/Input")
             
+            var stepsAsDict = Day7.setupDict(from: lines)
             var result: String = ""
-            
-            var stepsAsDict = setupDict(from: lines)
-            
+
             // Now go!
             while let nextStep = nextStep(from: stepsAsDict) {
                 result += nextStep
@@ -24,28 +23,6 @@ extension Day7 {
             }
             
             return result
-        }
-        
-        private func setupDict(from lines: [String]) -> [String: [String]] {
-            var stepsAsDict: [String: [String]] = [:]
-            
-            lines.forEach {
-                let capture = $0.capture(from: "Step ([A-Z]) must be finished before step ([A-Z]) can begin.")
-                let step = capture[0]
-                let doneBefore = capture[1]
-                
-                if let stepDictValue = stepsAsDict[step] {
-                    stepsAsDict[step] = stepDictValue.withAppended(element: doneBefore)
-                } else {
-                    stepsAsDict[step] = [doneBefore]
-                }
-                
-                if stepsAsDict[doneBefore] == nil {
-                    stepsAsDict[doneBefore] = []
-                }
-            }
-            
-            return stepsAsDict
         }
         
         func nextStep(from stepsAsDict: [String: [String]]) -> String? {

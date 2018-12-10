@@ -9,5 +9,25 @@
 import Foundation
 
 struct Day7 {
-    
+    static func setupDict(from lines: [String]) -> [String: [String]] {
+        var stepsAsDict: [String: [String]] = [:]
+        
+        lines.forEach {
+            let capture = $0.capture(from: "Step ([A-Z]) must be finished before step ([A-Z]) can begin.")
+            let step = capture[0]
+            let doneBefore = capture[1]
+            
+            if let stepDictValue = stepsAsDict[step] {
+                stepsAsDict[step] = stepDictValue.withAppended(element: doneBefore)
+            } else {
+                stepsAsDict[step] = [doneBefore]
+            }
+            
+            if stepsAsDict[doneBefore] == nil {
+                stepsAsDict[doneBefore] = []
+            }
+        }
+        
+        return stepsAsDict
+    }
 }
