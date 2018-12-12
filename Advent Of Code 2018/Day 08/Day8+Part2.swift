@@ -30,7 +30,17 @@ extension Day8 {
             if node.childNodes.count == 0 {
                 return node.metadataEntries.reduce(0, +)
             } else {
-                
+                var nodeValue = 0
+                for metadataEntry in node.metadataEntries {
+                    // Off by 1 as the value refers to 1-indexed numbers
+                    if let child = node.childNodes[safe: metadataEntry-1] {
+                        print("Got valid child at index \(metadataEntry-1)")
+                        nodeValue += getValueFor(node: child)
+                    } else {
+                        print("Skipping out of range index of \(metadataEntry)")
+                    }
+                }
+                return nodeValue
             }
         }
     }
