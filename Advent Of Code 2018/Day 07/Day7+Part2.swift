@@ -42,6 +42,7 @@ extension Day7 {
                     stepsInProgress[nextStep] = timePerStep[nextStep]!
                     peopleWorking -= 1
                     
+                    // swiftlint:disable:next line_length
                     print("\(timeTaken) - Assigned step \(nextStep) to a worker which will take \(stepsInProgress[nextStep]!) seconds. \(peopleWorking) people left.")
                 }
                 
