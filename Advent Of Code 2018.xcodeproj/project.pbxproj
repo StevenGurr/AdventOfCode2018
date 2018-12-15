@@ -39,6 +39,10 @@
 		B0491A9721C1BDEB00061F28 /* Day9+MarbleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A9621C1BDEB00061F28 /* Day9+MarbleCircle.swift */; };
 		B0491A9921C3173200061F28 /* Day9+StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A9821C3173200061F28 /* Day9+StateMachine.swift */; };
 		B0491A9B21C3180000061F28 /* Day9+Part2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A9A21C3180000061F28 /* Day9+Part2.swift */; };
+		B0491A9E21C4442700061F28 /* Day10.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A9D21C4442700061F28 /* Day10.swift */; };
+		B0491AA021C4443B00061F28 /* Day10+BothParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491A9F21C4443B00061F28 /* Day10+BothParts.swift */; };
+		B0491AA321C4480D00061F28 /* Day10+Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491AA221C4480D00061F28 /* Day10+Point.swift */; };
+		B0491AA521C4483200061F28 /* Day10+PointPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491AA421C4483200061F28 /* Day10+PointPrinter.swift */; };
 		B09296C421B29FC700629713 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09296C321B29FC700629713 /* main.swift */; };
 		B09296CE21B2A03400629713 /* Day1+Part1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09296CD21B2A03400629713 /* Day1+Part1.swift */; };
 		B09296D021B2A05800629713 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09296CF21B2A05800629713 /* Day1.swift */; };
@@ -105,6 +109,12 @@
 		B0491A9621C1BDEB00061F28 /* Day9+MarbleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day9+MarbleCircle.swift"; sourceTree = "<group>"; };
 		B0491A9821C3173200061F28 /* Day9+StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day9+StateMachine.swift"; sourceTree = "<group>"; };
 		B0491A9A21C3180000061F28 /* Day9+Part2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day9+Part2.swift"; sourceTree = "<group>"; };
+		B0491A9D21C4442700061F28 /* Day10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day10.swift; sourceTree = "<group>"; };
+		B0491A9F21C4443B00061F28 /* Day10+BothParts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day10+BothParts.swift"; sourceTree = "<group>"; };
+		B0491AA121C4444400061F28 /* Input - test */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Input - test"; sourceTree = "<group>"; };
+		B0491AA221C4480D00061F28 /* Day10+Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day10+Point.swift"; sourceTree = "<group>"; };
+		B0491AA421C4483200061F28 /* Day10+PointPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day10+PointPrinter.swift"; sourceTree = "<group>"; };
+		B0491AA621C44E2A00061F28 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
 		B09296C021B29FC700629713 /* Advent Of Code 2018 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Advent Of Code 2018"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09296C321B29FC700629713 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B09296CC21B2A02200629713 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
@@ -234,6 +244,19 @@
 			path = "Day 09";
 			sourceTree = "<group>";
 		};
+		B0491A9C21C4441300061F28 /* Day 10 */ = {
+			isa = PBXGroup;
+			children = (
+				B0491A9D21C4442700061F28 /* Day10.swift */,
+				B0491A9F21C4443B00061F28 /* Day10+BothParts.swift */,
+				B0491AA221C4480D00061F28 /* Day10+Point.swift */,
+				B0491AA421C4483200061F28 /* Day10+PointPrinter.swift */,
+				B0491AA121C4444400061F28 /* Input - test */,
+				B0491AA621C44E2A00061F28 /* Input */,
+			);
+			path = "Day 10";
+			sourceTree = "<group>";
+		};
 		B09296B721B29FC700629713 = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +286,7 @@
 				B0491A7121BD230200061F28 /* Day 07 */,
 				B0491A8221C1AA6800061F28 /* Day 08 */,
 				B0491A8D21C1BB5D00061F28 /* Day 09 */,
+				B0491A9C21C4441300061F28 /* Day 10 */,
 				B0491A4821B5B20400061F28 /* Helpers.swift */,
 				B09296D121B2A5A100629713 /* Solveable.swift */,
 				B09296C321B29FC700629713 /* main.swift */,
@@ -361,6 +385,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0491AA321C4480D00061F28 /* Day10+Point.swift in Sources */,
+				B0491AA021C4443B00061F28 /* Day10+BothParts.swift in Sources */,
 				B0491A6421B8863C00061F28 /* String.swift in Sources */,
 				B0491A5521B714E600061F28 /* Day4+Part1.swift in Sources */,
 				B0491A9B21C3180000061F28 /* Day9+Part2.swift in Sources */,
@@ -370,6 +396,7 @@
 				B09296CE21B2A03400629713 /* Day1+Part1.swift in Sources */,
 				B0491A9921C3173200061F28 /* Day9+StateMachine.swift in Sources */,
 				B0491A4B21B5B69100061F28 /* Day3+Part1.swift in Sources */,
+				B0491A9E21C4442700061F28 /* Day10.swift in Sources */,
 				B0491A5321B714C900061F28 /* Day4.swift in Sources */,
 				B0491A8A21C1AB1300061F28 /* Day8+Node.swift in Sources */,
 				B0491A6721B9DBD000061F28 /* Day5+Part2.swift in Sources */,
@@ -392,6 +419,7 @@
 				B0491A9521C1BC9900061F28 /* Day9+Marble.swift in Sources */,
 				B09296D521B2A67E00629713 /* Day1+Part2.swift in Sources */,
 				B0491A9121C1BB7B00061F28 /* Day9+Part1.swift in Sources */,
+				B0491AA521C4483200061F28 /* Day10+PointPrinter.swift in Sources */,
 				B0491A7021BB25EF00061F28 /* Day6+Part2.swift in Sources */,
 				B0491A8821C1AAD400061F28 /* Day8+Part1.swift in Sources */,
 				B0491A8F21C1BB6C00061F28 /* Day9.swift in Sources */,
