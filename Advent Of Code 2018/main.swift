@@ -38,7 +38,8 @@ let daysDone = 2
 //Day13.Part2().printResult(expected: "21,91")
 //Day14.Part1().printResult(expected: "2810862211")
 //Day14.Part2().printResult(expected: "20227889")
-Day16.Part1().printResult(expected: "590")
-Day16.Part2().printResult(expected: "475")
+//Day16.Part1().printResult(expected: "590")
+//Day16.Part2().printResult(expected: "475")
+Day17.Part1().go()
 
 print()
