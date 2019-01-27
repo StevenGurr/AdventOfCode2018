@@ -52,7 +52,7 @@ extension Day12 {
 //            print()
 //            print("Starting: \(pots)")
             
-            for generation in 0..<maxGenerations {
+            for _ in 0..<maxGenerations {
                 let newPots = pots.getClone()
                 
                 for plantIndex in pots.lowestPotIndex-2...pots.highestPotIndex+2 {
