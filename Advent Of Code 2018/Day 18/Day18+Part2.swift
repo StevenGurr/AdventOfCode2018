@@ -33,7 +33,7 @@ extension Day18 {
             let repititionSize = area.mutationHistory.count - repititionStartOffset
             print("Repitition size: \(repititionSize)")
             
-            let indexInRepeating = (minutesToRun-repititionStartOffset) % repititionSize // -1 to match 0 indexed arrays
+            let indexInRepeating = (minutesToRun-repititionStartOffset) % repititionSize
             print("position within repeating section: \(indexInRepeating)")
             let indexInArray = repititionStartOffset + indexInRepeating
             print("position within complete array: \(indexInArray)")
