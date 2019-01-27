@@ -87,6 +87,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B02148FB21FD2DED00ED1A30 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
 		B02F0BB421D27E99001EF8EF /* Day12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day12.swift; sourceTree = "<group>"; };
 		B02F0BB621D27EB1001EF8EF /* Day12+Part1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day12+Part1.swift"; sourceTree = "<group>"; };
 		B02F0BB821D280C1001EF8EF /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
@@ -113,7 +114,7 @@
 		B02F0BE421DC14C4001EF8EF /* Input2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input2; sourceTree = "<group>"; };
 		B02F0BE621DD5007001EF8EF /* Day17.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day17.swift; sourceTree = "<group>"; };
 		B02F0BE821DD5014001EF8EF /* Day17+Part1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day17+Part1.swift"; sourceTree = "<group>"; };
-		B02F0BEA21DD5046001EF8EF /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
+		B02F0BEA21DD5046001EF8EF /* Input - Test */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Input - Test"; sourceTree = "<group>"; };
 		B02F0BEB21DD5174001EF8EF /* Day17+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day17+Map.swift"; sourceTree = "<group>"; };
 		B0491A3C21B3EB2B00061F28 /* Day2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2.swift; sourceTree = "<group>"; };
 		B0491A3E21B3EB6B00061F28 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
@@ -257,7 +258,8 @@
 				B02F0BE621DD5007001EF8EF /* Day17.swift */,
 				B02F0BEB21DD5174001EF8EF /* Day17+Map.swift */,
 				B02F0BE821DD5014001EF8EF /* Day17+Part1.swift */,
-				B02F0BEA21DD5046001EF8EF /* Input */,
+				B02F0BEA21DD5046001EF8EF /* Input - Test */,
+				B02148FB21FD2DED00ED1A30 /* Input */,
 			);
 			path = "Day 17";
 			sourceTree = "<group>";

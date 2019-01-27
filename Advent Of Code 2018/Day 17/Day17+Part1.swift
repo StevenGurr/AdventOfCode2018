@@ -13,14 +13,13 @@ extension Day17 {
         func go() -> String {
             let lines = linesFromFile(path: "Day 17/Input")
             
-            let map = Map(lines: lines, springX: 500)
+            let map = Map(lines: lines, springX: 500, springY: 0)
             
-            repeat {
-                map.dbgPrint()
-                map.drip()
-            } while map.isWaterAtBottom == false
+            map.drip()
+            map.dbgPrint()
             
-            preconditionFailure()
+            let wetCells = map.numberOfWetCells
+            return String(wetCells)
         }
     }
 }

@@ -9,136 +9,166 @@
 import Foundation
 
 extension Day17 {
+    fileprivate struct CellPosition: Hashable {
+        var x: Int
+        var y: Int
+    }
+    
+    fileprivate struct ClayPosition: Hashable {
+        let position: CellPosition
+        let type: CellType
+        
+        var hashValue: Int {
+            return position.x ^ position.x
+        }
+    }
+    
     class Map {
-        var cells: [[Cell]] = []
-        private var head: Cell!
+        private let springY: Int
+        private var cells: [[CellType]] = []
+        private var maxY = 0
+        
+        private lazy var springPosition: CellPosition = {
+            for x in 0..<cells[0].count where cells[0][x] == .spring {
+                return CellPosition(x: x, y: 0)
+            }
+            preconditionFailure()
+        }()
         
         var isWaterAtBottom: Bool {
-            let flattened = cells.flatMap({$0})
-            let maxY = flattened.sorted(by: { $0.y > $1.y }).first!.y
-            return maxY == head.y
+            let bottomRow = cells.last!
+            return bottomRow.contains(where: { $0.isWater })
         }
         
-        init(lines: [String], springX: Int) {
-            var cells: Set<Cell> = Set()
-            lines.forEach {
-                buildLine(line: $0, cells: &cells)
+        var numberOfWetCells: Int {
+            let flattenedCells = cells.flatMap { $0 }
+            return flattenedCells.reduce(0) {
+                if $1 == .waterPassed {
+                    return $0 + 1
+                } else if $1 == .settledWater {
+                    return $0 + 1
+                } else {
+                    return $0
+                }
             }
-            setSpring(x: springX, cells: &cells)
-            fillSpacesWithSand(cells: &cells)
-            convertToArray(cells: cells)
         }
         
-        private func buildLine(line: String, cells: inout Set<Cell>) {
+        init(lines: [String], springX: Int, springY: Int) {
+            self.springY = springY
+            var cellPositions: Set<ClayPosition> = Set()
+            
+            lines.forEach {
+                buildLine(line: $0, cellPositions: &cellPositions)
+            }
+            
+            cellPositions.insert(ClayPosition(position: CellPosition(x: springX, y: springY), type: .spring))
+            
+            print(cellPositions.first)
+            
+            // Now turn it into the 2D array we use going forward
+            let xOffset = cellPositions.sorted(by: { $0.position.x < $1.position.x }).first!.position.x
+            let xSize = cellPositions.sorted(by: { $0.position.x > $1.position.x }).first!.position.x - xOffset
+            let yOffset = cellPositions.sorted(by: { $0.position.y < $1.position.y }).first!.position.y
+            let ySize = cellPositions.sorted(by: { $0.position.y > $1.position.y }).first!.position.y - yOffset
+            
+            for y in 0...ySize {
+                cells.append([])
+                for x in 0...xSize {
+                    if let cell = cellPositions.first(where: { $0.position.y == y+yOffset && $0.position.x == x+xOffset }) {
+                        cells[y].append(cell.type)
+                    } else {
+                        cells[y].append(.sand)
+                    }
+                }
+            }
+            
+            maxY = ySize
+        }
+        
+        private func buildLine(line: String, cellPositions: inout Set<ClayPosition>) {
             let bits = line.capture(from: "^([xy])=(\\d+), ([xy])=(\\d+).{2}(\\d+)$")
             let firstValue = Int(bits[1])!
             let secondValueFrom = Int(bits[3])!
             let secondValueTo = Int(bits[4])!
             
             if bits[0] == "x" {
-                buildClayFromRange(xFrom: firstValue, xTo: firstValue, yFrom: secondValueFrom, yTo: secondValueTo, cells: &cells)
+                buildClayFromRange(xFrom: firstValue, xTo: firstValue, yFrom: secondValueFrom, yTo: secondValueTo, cellPositions: &cellPositions)
             } else {
-                buildClayFromRange(xFrom: secondValueFrom, xTo: secondValueTo, yFrom: firstValue, yTo: firstValue, cells: &cells)
+                buildClayFromRange(xFrom: secondValueFrom, xTo: secondValueTo, yFrom: firstValue, yTo: firstValue, cellPositions: &cellPositions)
             }
         }
         
-        private func buildClayFromRange(xFrom: Int, xTo: Int, yFrom: Int, yTo: Int, cells: inout Set<Cell>) {
+        private func buildClayFromRange(xFrom: Int, xTo: Int, yFrom: Int, yTo: Int, cellPositions: inout Set<ClayPosition>) {
             for x in xFrom...xTo {
                 for y in yFrom...yTo {
-                    let cell = Cell(x: x, y: y, type: .clay)
-                    cells.insert(cell)
-                }
-            }
-        }
-        
-        private func fillSpacesWithSand(cells: inout Set<Cell>) {
-            let minX = cells.sorted(by: { $0.x < $1.x }).first!.x
-            let maxX = cells.sorted(by: { $0.x > $1.x }).first!.x
-            let minY = cells.sorted(by: { $0.y < $1.y }).first!.y
-            let maxY = cells.sorted(by: { $0.y > $1.y }).first!.y
-            
-            for x in minX...maxX {
-                for y in minY...maxY {
-                    if cells.contains(where: { $0.x == x && $0.y == y }) == false {
-                        cells.insert(Cell(x: x, y: y, type: .sand))
-                    }
-                }
-            }
-        }
-        
-        private func setSpring(x: Int, cells: inout Set<Cell>) {
-            // Insert the cell one row above the current top row
-            let minY = cells.sorted(by: { $0.y < $1.y }).first!.y
-            
-            let springCell = Cell(x: x, y: minY-1, type: .spring)
-            cells.insert(springCell)
-            self.head = springCell
-        }
-        
-        private func convertToArray(cells cellsSet: Set<Cell>) {
-            func cellAt(x: Int, y: Int) -> Cell {
-                let cellsHere = cellsSet.filter { $0.x == x && $0.y == y }
-                guard cellsHere.count == 1 else {
-                    preconditionFailure()
-                }
-                return cellsHere.first!
-            }
-            
-            let minX = cellsSet.sorted(by: { $0.x < $1.x }).first!.x
-            let maxX = cellsSet.sorted(by: { $0.x > $1.x }).first!.x
-            let minY = cellsSet.sorted(by: { $0.y < $1.y }).first!.y
-            let maxY = cellsSet.sorted(by: { $0.y > $1.y }).first!.y
-            let xOffset = cellsSet.sorted(by: { $0.x < $1.x }).first!.x
-            
-            for y in minY...maxY {
-                cells.append([])
-                for x in minX...maxX {
-                    cells[y].append(cellAt(x: x, y: y))
+                    cellPositions.insert(ClayPosition(position: CellPosition(x: x, y: y), type: .clay))
                 }
             }
         }
         
         func drip() {
-            let flattened = cells.flatMap({$0})
-            let xOffset = flattened.sorted(by: { $0.x < $1.x }).first!.x
-            let yOffset = flattened.sorted(by: { $0.y < $1.y }).first!.y
-            let headX = head.x - xOffset
-            let headY = head.y - yOffset
-            
-            let newCell: Cell
-            
-            // Try down
-            if canExtendTo(y: headY+1, x: headX) {
-                newCell = Cell(x: head.x, y: head.y+1, type: .waterPassed)
-                cells[headY+1][headX] = newCell
-            // Try left
-            } else if canExtendTo(y: headY, x: headX-1) {
-                newCell = Cell(x: head.x-1, y: head.y, type: .settledWater)
-                cells[headY][headX-1] = newCell
-            // Try right
-            } else if cells[headY][headX+1].type == .sand {
-                preconditionFailure()
-            // Try up
-            } else if cells[headY-1][headX].type == .sand {
-                preconditionFailure()
-            // Completely failed
-            } else {
-                preconditionFailure()
-            }
-            
-            head = newCell
+            dripFrom(x: springPosition.x, y: springPosition.y)
         }
         
-        private func canExtendTo(y: Int, x: Int) -> Bool {
-            switch cells[y][x].type {
-            case .sand,
-                 .waterPassed:
-                return true
-            default:
-                return false
+        fileprivate func dripFrom(x: Int, y: Int) {
+            if y >= maxY {
+                return
+            }
+            
+            if cells[y + 1][x] == .sand {
+                cells[y + 1][x] = .waterPassed
+                dripFrom(x: x, y: y + 1)
+            }
+            
+            let cellBeneath = cells[y + 1][x]
+            if (cellBeneath == .clay || cellBeneath == .settledWater) && cells[y][x + 1] == .sand {
+                cells[y][x + 1] = .waterPassed
+                dripFrom(x: x + 1, y: y)
+            }
+            
+            if (cellBeneath == .clay || cellBeneath == .settledWater) && cells[y][x - 1] == .sand {
+                cells[y][x - 1] = .waterPassed
+                dripFrom(x: x - 1, y: y)
+            }
+            
+            if hasBothWalls(x: x, y: y) {
+                fillLevel(x: x, y: y)
             }
         }
         
+        private func hasBothWalls(x: Int, y: Int) -> Bool {
+            return hasWall(x: x, y: y, xOffset: 1) && hasWall(x: x, y: y, xOffset: -1)
+        }
+        
+        private func hasWall(x: Int, y: Int, xOffset: Int) -> Bool {
+            var currentX = x
+            while true {
+                if cells[y][currentX] == .sand {
+                    return false
+                } else if cells[y][currentX] == .clay {
+                    return true
+                }
+                currentX += xOffset
+            }
+        }
+
+        private func fillLevel(x: Int, y: Int) {
+            fillSide(x: x, y: y, xOffset: 1)
+            fillSide(x: x, y: y, xOffset: -1)
+        }
+        
+        private func fillSide(x: Int, y: Int, xOffset: Int) {
+            var currentX = x
+            while true {
+                if cells[y][currentX] == .clay {
+                    return
+                }
+                
+                cells[y][currentX] = .settledWater
+                currentX += xOffset
+            }
+        }
+
         func dbgPrint() {
             print()
             for y in 0..<cells.count {
@@ -147,7 +177,7 @@ extension Day17 {
                 }
                 print()
             }
-            
+
             print()
             for _ in 0..<cells.count {
                 print("=", terminator: "")

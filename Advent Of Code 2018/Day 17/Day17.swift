@@ -9,13 +9,15 @@
 import Foundation
 
 struct Day17 {
-    struct Cell: Hashable {
-        let x: Int
-        let y: Int
-        let type: CellType
+    enum CellType {
+        case sand
+        case clay
+        case spring
+        case waterPassed
+        case settledWater
         
         var dbgChar: Character {
-            switch type {
+            switch self {
             case .sand:
                 return "."
             case .clay:
@@ -28,13 +30,21 @@ struct Day17 {
                 return "~"
             }
         }
-    }
-    
-    enum CellType {
-        case sand
-        case clay
-        case spring
-        case waterPassed
-        case settledWater
+        
+        var isWater: Bool {
+            switch self {
+            case .sand,
+                 .clay,
+                 .spring:
+                return false
+            case .waterPassed,
+                 .settledWater:
+                return true
+            }
+        }
+        
+        var isClay: Bool {
+            return self == .clay
+        }
     }
 }
