@@ -14,15 +14,6 @@ extension Day17 {
         var y: Int
     }
     
-    fileprivate struct ClayPosition: Hashable {
-        let position: CellPosition
-        let type: CellType
-        
-        var hashValue: Int {
-            return position.x ^ position.x
-        }
-    }
-    
     class Map {
         private let springY: Int
         private var cells: [[CellType]] = []
