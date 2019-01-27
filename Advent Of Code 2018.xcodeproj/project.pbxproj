@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02148FD21FDD31B00ED1A30 /* Day17+Part2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02148FC21FDD31B00ED1A30 /* Day17+Part2.swift */; };
 		B02F0BB521D27E99001EF8EF /* Day12.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F0BB421D27E99001EF8EF /* Day12.swift */; };
 		B02F0BB721D27EB1001EF8EF /* Day12+Part1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F0BB621D27EB1001EF8EF /* Day12+Part1.swift */; };
 		B02F0BBA21D28808001EF8EF /* Day12+Pot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F0BB921D28808001EF8EF /* Day12+Pot.swift */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		B02148FB21FD2DED00ED1A30 /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
+		B02148FC21FDD31B00ED1A30 /* Day17+Part2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day17+Part2.swift"; sourceTree = "<group>"; };
 		B02F0BB421D27E99001EF8EF /* Day12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day12.swift; sourceTree = "<group>"; };
 		B02F0BB621D27EB1001EF8EF /* Day12+Part1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Day12+Part1.swift"; sourceTree = "<group>"; };
 		B02F0BB821D280C1001EF8EF /* Input */ = {isa = PBXFileReference; lastKnownFileType = text; path = Input; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				B02F0BE621DD5007001EF8EF /* Day17.swift */,
 				B02F0BEB21DD5174001EF8EF /* Day17+Map.swift */,
 				B02F0BE821DD5014001EF8EF /* Day17+Part1.swift */,
+				B02148FC21FDD31B00ED1A30 /* Day17+Part2.swift */,
 				B02F0BEA21DD5046001EF8EF /* Input - Test */,
 				B02148FB21FD2DED00ED1A30 /* Input */,
 			);
@@ -551,6 +554,7 @@
 				B0491A5321B714C900061F28 /* Day4.swift in Sources */,
 				B0491A8A21C1AB1300061F28 /* Day8+Node.swift in Sources */,
 				B02F0BCE21D6B79E001EF8EF /* Day14+Part1.swift in Sources */,
+				B02148FD21FDD31B00ED1A30 /* Day17+Part2.swift in Sources */,
 				B02F0BC821D56685001EF8EF /* Day13+Part2.swift in Sources */,
 				B02F0BDE21DBFD90001EF8EF /* Day16+Part1.swift in Sources */,
 				B02F0BC521D3F9BF001EF8EF /* Day13+Cart.swift in Sources */,

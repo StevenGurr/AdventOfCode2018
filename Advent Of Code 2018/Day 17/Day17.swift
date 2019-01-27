@@ -30,21 +30,5 @@ struct Day17 {
                 return "~"
             }
         }
-        
-        var isWater: Bool {
-            switch self {
-            case .sand,
-                 .clay,
-                 .spring:
-                return false
-            case .waterPassed,
-                 .settledWater:
-                return true
-            }
-        }
-        
-        var isClay: Bool {
-            return self == .clay
-        }
     }
 }
